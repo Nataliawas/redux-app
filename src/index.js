@@ -27,6 +27,8 @@ store.dispatch({
     text: 'Go  to work',
 })
 
+store.dispatch(addTodo('go for a walk'))
+
 window.inc = () => store.dispatch(inc())
 window.dec = () => store.dispatch(dec())
 window.addTodo = text => store.dispatch(addTodo(text))
