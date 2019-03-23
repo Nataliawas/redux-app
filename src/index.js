@@ -3,20 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { createStore } from 'redux'
+import { inc, dec, counterReducer } from './store/counter'
 
-const INCREMENT_COUNTER = 'INCREMENT_COUNTER'
-const DECREMENT_COUNTER = 'DECREMENT_COUNTER'
 
-const counterReducer = (state = 0, action) => {
-    switch (action.type) {
-        case INCREMENT_COUNTER:
-            return state + 1
-        case DECREMENT_COUNTER:
-            return state - 1
-        default:
-            return state
-    }
-}
 
 const store = createStore(
     counterReducer,
@@ -24,12 +13,8 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-store.dispatch({
-    type: INCREMENT_COUNTER
-})
-store.dispatch({
-    type: DECREMENT_COUNTER
-})
+window.inc = () => store.dispatch(inc())
+window.dec = () => store.dispatch(dec())
 
 
 
