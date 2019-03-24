@@ -5,8 +5,8 @@ import App from './App';
 import { createStore, combineReducers } from 'redux'
 import { inc, dec } from './store/counter'
 import counterReducer from './store/counter'
-import todosReducer, {addTodo, toggleTodo, deleteTodo} from './store/todos';
-
+import todosReducer, { addTodo, toggleTodo, deleteTodo } from './store/todos';
+import { Provider } from 'react-redux'
 
 const store = createStore(
     combineReducers({
@@ -36,4 +36,5 @@ window.deleteTodo = () => store.dispatch(deleteTodo())
 window.toggleTodo = () => store.dispatch(toggleTodo())
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store} ><App /></Provider>, document.getElementById('root'));
